@@ -15,10 +15,26 @@ const useStyles = makeStyles(theme => ({
 
 function Content(props) {
     const classes = useStyles();
+    const isBottom = (el) => {
+        return el.getBoundingClientRect().bottom <= window.innerHeight;
+    }
+    const trackScrolling = () => {
+        const wrappedElement = document.getElementById('movie-cards');
+        if (isBottom(wrappedElement)) {
+            console.log('header bottom reached');
+            props.getItems(props.type, props.category, props.page + 1);
+        }
+    };
+    useEffect(() => {
+        document.addEventListener('scroll', trackScrolling);
+        return () => {
+            document.removeEventListener('scroll', trackScrolling);
+        }
+    })
     useEffect(() => {
         props.getItems(props.type, props.category, 1);
     }, [props.type, props.category]);
-    return (<div className={classes.cards}>
+    return (<div className={classes.cards} id="movie-cards">
         {props.list.map((item, key) =>
             <Card key={key} poster_path={item.poster_path} title={item.title || item.name} />)}
     </div>)
