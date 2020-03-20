@@ -1,9 +1,9 @@
 import initialState from "./initialState";
-import actionsGenre from "../actions/options";
+import types from "../actions/options";
 
 export default function (state = initialState.options, action) {
     switch (action.type) {
-        case actionsGenre.GET_GENRES_SUCCESS:
+        case types.GET_GENRES_SUCCESS:
             if (action.dataType === "movie")
                 return {
                     ...state,
@@ -14,7 +14,16 @@ export default function (state = initialState.options, action) {
                     ...state,
                     genreTvList: action.data
                 };
-
+        case types.UPDATE_TYPE:
+            return {
+                ...state,
+                type: action.value
+            }
+        case types.UPDATE_GENRE:
+            return {
+                ...state,
+                genre: action.value
+            }
         default:
             return state;
     }

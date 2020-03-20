@@ -5,7 +5,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect'
 import "./SideBar.scss";
-import { getGenres } from "../redux/actions/options";
+import { getGenres, updateType, udpateGenre } from "../redux/actions/options";
 
 
 const useStyles = makeStyles(theme => ({
@@ -29,18 +29,21 @@ const useStyles = makeStyles(theme => ({
 }));
 function SideBar(props) {
     const classes = useStyles();
-    const [state, setState] = React.useState({
-        type: "",
-        genre: "",
-    });
-    props.getGenres("tv");
     const handleChange = event => {
         const name = event.target.name;
-        setState({
-            ...state,
-            [name]: event.target.value,
-        });
+        const value = event.target.value;
+        if (name === "type") {
+            props.updateType(value);
+            props.getGenres(value);
+        }
+        if (name === "genre") {
+            props.udpateGenre(value);
+        }
     }
+    useEffect(() => {
+        props.updateType("movie");
+        props.getGenres("movie");
+    }, []);
     return (
         <div className="sidebar">
             <div className="sidebar-header">
@@ -53,14 +56,14 @@ function SideBar(props) {
                 <FormControl className={classes.formControl}>
                     <NativeSelect
                         className={classes.select}
-                        value={state.age}
+                        value={props.type}
                         onChange={handleChange}
                         inputProps={{
                             name: 'type',
                         }}
                     >
-                        <option value="movies">Movies</option>
-                        <option value="tvshows">TV Shows</option>
+                        <option value="movie">Movies</option>
+                        <option value="tv">TV Shows</option>
                     </NativeSelect>
                 </FormControl>
             </div>
@@ -71,14 +74,13 @@ function SideBar(props) {
                 <FormControl className={classes.formControl}>
                     <NativeSelect
                         className={classes.select}
-                        value={state.age}
+                        value={props.genre}
                         onChange={handleChange}
                         inputProps={{
                             name: 'genre',
                         }}
                     >
-                        <option value="movies">Movies</option>
-                        <option value="tvshows">TV Shows</option>
+                        {props.genreList.map(item => <option value={item.id}>{item.name}</option>)}
                     </NativeSelect>
                 </FormControl>
             </div>
@@ -88,12 +90,16 @@ function SideBar(props) {
 
 function mapStateToProps(state) {
     return {
-
+        type: state.options.type,
+        genreList: state.options.type === "movie" ? state.options.genreMovieList : state.options.genreTvList,
+        genre: state.options.genre
     };
 }
 
 const mapDispatchToProps = {
-    getGenres
+    getGenres,
+    updateType,
+    udpateGenre
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideBar)

@@ -6,6 +6,8 @@ const types = {
     GET_GENRES: "GET_GENRES",
     GET_GENRES_SUCCESS: "GET_GENRES_SUCCESS",
     GET_GENRES_FAILURE: "GET_GENRES_FAILURE",
+    UPDATE_TYPE: "UPDATE_TYPE",
+    UPDATE_GENRE: "UPDATE_GENRE"
 }
 
 export function getGenreSuccess(res, type) {
@@ -26,6 +28,20 @@ export function getGenres(type) {
                 dispatch(DEC_LOADIND());
             });
     };
+}
+
+export function updateType(value) {
+    return {
+        type: types.UPDATE_TYPE,
+        value
+    }
+}
+
+export function udpateGenre(id) {
+    return {
+        type: types.UPDATE_GENRE,
+        value: id
+    }
 }
 
 export default types;
