@@ -8,9 +8,7 @@ export default class Layout extends React.Component {
         return (<div className="application-layout">
             <div className="application-body">
                 <Header />
-                <div className="application-content">
-
-                </div>
+                {this.props.children}
             </div>
             <div className="application-sidebbar">
                 <SideBar />

@@ -8,8 +8,10 @@
 .header-center {
 	display: flex;
 	color: #0f5c8a;
-	div {
+	a {
 		margin: 0px 10px;
+		text-decoration: none;
+		color: inherit;
 	}
 }
 // .header-center >
