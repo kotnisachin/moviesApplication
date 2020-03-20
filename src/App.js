@@ -5,46 +5,39 @@ import './App.scss';
 import Layout from './components/Layout';
 import Content from './components/Content';
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-  render() {
-    return (
-      <Router>
-        <Switch>
-          <Layout >
-            <Route
-              exact
-              path={"/popular"}
-              component={(props) => <Content category="popular" {...props} />}
-            />
-            <Route
-              exact
-              path={"/trend"}
-              component={(props) => <Content category="vote_average" {...props} />}
-            />
-            <Route
-              exact
-              path={"/newest"}
-              component={(props) => <Content category="release_date" {...props} />}
-            />
-            <Route
-              exact
-              path={"/top-rated"}
-              component={(props) => <Content category="vote_count" {...props} />}
-            />
-            <Route
-              exact
-              path={"/search"}
-              component={(props) => <Content category="search" {...props} />}
-            />
-          </Layout>
-        </Switch>
-      </Router>
-    );
-  }
+export default function App() {
+  return (
+    <Router>
+      <Switch>
+        <Layout >
+          <Route
+            exact
+            path={"/popular"}
+            component={(props) => <Content category="popular" {...props} />}
+          />
+          <Route
+            exact
+            path={"/trend"}
+            component={(props) => <Content category="vote_average" {...props} />}
+          />
+          <Route
+            exact
+            path={"/newest"}
+            component={(props) => <Content category="release_date" {...props} />}
+          />
+          <Route
+            exact
+            path={"/top-rated"}
+            component={(props) => <Content category="vote_count" {...props} />}
+          />
+          <Route
+            exact
+            path={"/search"}
+            component={(props) => <Content category="search" {...props} />}
+          />
+        </Layout>
+      </Switch>
+    </Router>
+  );
 }
+
