@@ -25,17 +25,22 @@ export default class App extends React.Component {
             <Route
               exact
               path={"/trend"}
-              component={(props) => <Content category="now_playing" {...props} />}
+              component={(props) => <Content category="vote_average" {...props} />}
             />
             <Route
               exact
               path={"/newest"}
-              component={(props) => <Content category="latest" {...props} />}
+              component={(props) => <Content category="release_date" {...props} />}
             />
             <Route
               exact
               path={"/top-rated"}
-              component={(props) => <Content category="top_rated" {...props} />}
+              component={(props) => <Content category="vote_count" {...props} />}
+            />
+            <Route
+              exact
+              path={"/search"}
+              component={(props) => <Content category="search" {...props} />}
             />
           </Layout>
         </Switch>

@@ -6,7 +6,7 @@ export default {
         to: "",
         rating: "",
         genreMovieList: [],
-        genreTvList: []
+        genreTvList: [],
     },
     loading: {
         count: 0
@@ -14,6 +14,7 @@ export default {
     information: {
         list: [],
         page: 0,
+        search: ""
     }
 
 }

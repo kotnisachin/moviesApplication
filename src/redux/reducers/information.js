@@ -16,6 +16,11 @@ export default function (state = initialState.information, action) {
                     list: [...state.list, ...action.list],
                     page: action.page
                 };
+        case types.UPDATE_SEARCH_VALUE:
+            return {
+                ...state,
+                search: action.value
+            };
         default:
             return state;
     }

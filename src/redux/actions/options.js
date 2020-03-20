@@ -30,6 +30,7 @@ export function getGenres(type) {
     };
 }
 
+
 export function updateType(value) {
     return {
         type: types.UPDATE_TYPE,
