@@ -1,0 +1,15 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	height: 60px;
+	margin: 20px 30px;
+	font-weight: bold;
+}
+.header-center {
+	display: flex;
+	color: #0f5c8a;
+	div {
+		margin: 0px 10px;
+	}
+}
+// .header-center >
