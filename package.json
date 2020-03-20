@@ -1,0 +1,21 @@
+{
+	"name": "moviesapplication",
+	"version": "0.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "concurrently  -k -p \"[{name}]\" -n \"React,Node\" -c \"blue.bold,cyan.bold\" \"npm run start:clientDev\" \"npm run start:serverDev\"",
+		"start:clientDev": "npm start --prefix client",
+		"start:serverDev": "npm run start --prefix server"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://gecgithub01.walmart.com/GBOS/HR-Mart-Bridge.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"concurrently": "^4.1.0"
+	},
+	"dependencies": {}
+}
