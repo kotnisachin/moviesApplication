@@ -1,6 +1,5 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
-import { fontWeight } from "@material-ui/system";
 
 const useStyles = makeStyles(theme => ({
     card: {
