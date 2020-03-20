@@ -80,7 +80,7 @@ function SideBar(props) {
                             name: 'genre',
                         }}
                     >
-                        {props.genreList.map(item => <option value={item.id}>{item.name}</option>)}
+                        {props.genreList.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
                     </NativeSelect>
                 </FormControl>
             </div>
@@ -102,4 +102,4 @@ const mapDispatchToProps = {
     udpateGenre
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SideBar)
+export default connect(mapStateToProps, mapDispatchToProps)(SideBar);
