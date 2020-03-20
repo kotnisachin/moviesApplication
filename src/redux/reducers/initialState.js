@@ -1,6 +1,6 @@
 export default {
     options: {
-        type: "",
+        type: "movie",
         genre: "",
         from: "",
         to: "",
@@ -10,6 +10,10 @@ export default {
     },
     loading: {
         count: 0
+    },
+    information: {
+        list: [],
+        page: 0,
     }
 
 }

@@ -7,7 +7,7 @@ export default function (state = initialState.loading, action) {
             return {
                 count: state.count + 1
             };
-        case types.DES_LOADING_COUNT:
+        case types.DEC_LOADING_COUNT:
             return {
                 count: state.count - 1
             };
