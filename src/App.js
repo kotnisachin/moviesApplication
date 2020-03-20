@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route, Switch } from "react-router-dom";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Route, Switch, Redirect, BrowserRouter as Router } from "react-router-dom";
 import './App.scss';
 import Layout from './components/Layout';
 import Content from './components/Content';
@@ -10,6 +9,7 @@ export default function App() {
     <Router>
       <Switch>
         <Layout >
+          <Redirect exact from="/" to="popular" />
           <Route
             exact
             path={"/popular"}
